@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - A.N.G.A.T</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f4e3c1, #e6c68d);
+            color: #5a3e1b;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(50px) scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #a36a00;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .highlight {
+            color: #d48200;
+            font-weight: bold;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+            position: relative;
+            z-index: 1;
+        }
+        .team {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .member {
+            background: #ffebcc;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .member:hover {
+            transform: scale(1.05);
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #a36a00;
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .button:hover {
+            background: #d48200;
+        }
+        .background-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+            opacity: 0.1;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background-pattern"></div>
+        <h1>About <span class="highlight">A.N.G.A.T</span></h1>
+        <p><strong>A.N.G.A.T</strong> stands for <span class="highlight">Awareness, Nurturing, Guidance, Advocacy, and Training</span>. This initiative was created with the vision of promoting preparedness and equipping individuals with the necessary first aid knowledge and skills to confidently handle emergencies. We firmly believe that having even the most basic understanding of first aid can make a significant difference in life-threatening situations.</p>
+        
+        <p>Through this project, we provide <span class="highlight">comprehensive yet easy-to-understand resources</span> on essential first aid techniques, including <strong>bandaging for wounds, proper lifting and carrying of injured persons, and immediate responses to emergency situations</strong>. Our goal is to empower communities by making first aid knowledge <strong>accessible, practical, and engaging</strong>. We recognize that emergency situations can happen at any time, whether at home, in schools, or in public places. With A.N.G.A.T, we strive to create an avenue where people can gain essential life-saving skills in an interactive and effective manner.</p>
+        
+        <p>In today's world, many individuals lack the proper training to respond effectively to injuries and emergencies. A.N.G.A.T bridges this gap by providing <span class="highlight">interactive tutorials, visual demonstrations, and step-by-step guides</span> to help users develop the necessary skills. Many emergencies occur unexpectedly, and in such critical moments, <span class="highlight">knowing what to do can mean the difference between life and death</span>. This project emphasizes <strong>hands-on learning</strong> and <strong>real-life applications</strong> to ensure that individuals not only understand first aid concepts but also develop the confidence to use them when needed.</p>
+        
+        <p>A.N.G.A.T is not just about learning—it’s about <strong>fostering a culture of preparedness, responsibility, and compassion</strong>. By equipping people with the right knowledge and skills, we contribute to a society where everyone can play a role in <span class="highlight">saving lives and promoting well-being</span>. We envision a future where basic first aid is not just a skill reserved for medical professionals but a universal competency accessible to everyone. </p>
+
+        <p>This project is built on the principles of <strong>teamwork, research, and innovation</strong>. We work closely with professionals and educators to ensure that the information we provide is accurate and effective. Our team continuously refines and updates the platform, ensuring that it meets the evolving needs of users. The implementation of A.N.G.A.T is also driven by <span class="highlight">passion and commitment</span> to public safety and health. We believe that small actions, like learning how to properly apply a bandage or assist someone in distress, can create a lasting impact on individuals and communities alike.</p>
+        
+        <div class="team">
+            <div class="member">
+                <h3>Lyka</h3>
+                <p>Project Leader & Developer</p>
+            </div>
+            <div class="member">
+                <h3>Jamila & Ryanne</h3>
+                <p>Research & Content Specialist</p>
+            </div>
+            <div class="member">
+                <h3>Jasmine</h3>
+                <p>Design & Media Coordinator</p>
+            </div>
+        </div>
+        
+        <a href="Homepage.html" class="button">GROUP-7</a>
+    </div>
+</body>
+</html>

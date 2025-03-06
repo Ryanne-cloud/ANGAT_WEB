@@ -1,0 +1,300 @@
+<!Doctype>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falling Objects</title>
+           <link rel="stylesheet" href="styles.css">
+           <script>
+                function openPopup(popupName) {
+                    var popup = document.getElementById(popupName);
+                    popup.style.display = 'block';
+                }
+                function closePopup(popupName) {
+                    var popup = document.getElementById(popupName);
+                    popup.style.display = 'none';
+                }
+            </script>
+     </head>
+
+    <style>
+        {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana;
+}
+
+        body {
+            display: block;
+            margin: 90px;
+             display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3f161e;
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+           background: linear-gradient(to bottom, #3e2723, #4e342e, #6d4c41);
+        }
+
+        .video-section {
+    width: 90%;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+     box-shadow: 5px 10px 30px #000;
+ }
+
+.video-container {
+    text-align: center;
+}
+
+.video-container video {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.review-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+}
+
+.write-review, .submit-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4A2C2A;
+    color: white;
+    cursor: pointer;
+}
+
+.comments-section {
+    width: 90%;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+     box-shadow: 5px 10px 30px #000;
+}
+
+.comment {
+    margin-bottom: 15px;
+}
+
+.comment strong {
+    color: #5A2A27;
+}
+
+.like-dislike span {
+    margin-right: 10px;
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 10px; /* Distance from the top */
+    right: 10px; /* Distance from the right */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    width: 300px; /* Adjust width as needed */
+    max-width: 90%;
+    border-radius: 10px;
+    z-index: 2000;
+}
+        .popup .close {
+            cursor: pointer;
+            font-size: 20px;
+            color: #3f161e;
+            float: right;
+        }
+        .popup h3 {
+            color: #3f161e;
+        }
+    p {
+        font-family: verdana;
+        text-align: left;
+    }    
+h3 {
+    font-family: verdana;
+}
+.back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4A2C2A; /* Theme color */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px; /* Space below the button */
+        }
+
+        .back-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 0;
+        }
+
+        .back-btn:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .back-btn:hover {
+            background-color: #3f161e; /* Darker shade on hover */
+            transform: translateY(-5px);
+        }
+
+        .back-btn span {
+            position: relative;
+            z-index: 1;
+        }
+</style>
+<body style="background-color:#f4f4f4;">
+<nav class="navbar">
+    <a href="Homepage.html"><img src="logo.png" width="80px" height="80px"></a>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="javascript:void(0);" onclick="openPopup('profilePopup')"><img src="profile.png" width="50px" height="50px"></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="javascript:void(0);" onclick="openPopup('menuPopup')"><img src="navbar.png" width="40px" height="40px"></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</nav>
+<center>
+<main>
+        <section class="video-section">
+            <a href="WTDIS.html" class="back-btn" onclick="goBack()">
+                    &#8592; Back
+                </a>
+            <div class="video-container">
+                <video controls>
+                    <source src="objects.mp4" type="video/mp4">
+                    
+                </video>
+                <h3>What To Do If Objects Fall </h3>
+<p> 
+
+Falling objects injure both children and adults.<br>
+  While high storage is sometimes necessary, prevent accidents<br>
+   by organizing items neatly, avoiding overfilled shelves, and storing heavy items low.<br>
+     With young children, constant supervision of items on elevated surfaces is crucial.<br>
+       Ideally, store nothing above shoulder height. <br>
+        Always use safe methods (steps, ladders) to access high items. <br>
+         While eliminating all risks is impossible, organization<br>
+          and vigilance significantly reduce accident chances.
+</p>
+<p>
+
+CAUSES:<br>
+
+- Unstable gait of toddler.<br>
+
+- Presence of objects on floor.<br>
+
+- Lack of supervision.<br>
+
+- Curiosity of the children
+</p>
+<p>
+
+
+PREVENTION:<br>
+
+- Keep the floor free of toys and objects.<br>
+
+- Exercise close supervision when a toddler learns to walk.<br>
+
+- Never leave babies unattended on raised surfaces.<br>
+
+- Keep the floor dry.<br>
+
+- Ensure the bed rails of the baby cot are raised when the baby is in the cot.<br>
+
+- Always use a securely fitted safety harness in a pram,pushchair or high chair.<br>
+
+- Windows and doors must be locked to avoid misadventure by children.<br>
+
+- Avoid placing "step-stones" such as chair next to a window.<br>
+
+- Take extra care to avoid side-turning of chair.
+</p>
+<p>
+
+FIRST AID<br>
+
+- Don't panic. Call for help if necessary.<br>
+
+- Check the level of consciousness of the infant/child.<br>
+
+- Examine the child if Airway is clear(e.g. can talk, cry or not);<br>
+ If breathing is adequate and circulation is normal <br>
+ (observe colour of face, depth and rate of breathing).<br>
+
+- If breathing and circulation is normal check for any other injuries of the body.<br>
+
+- If bleeding occurs, ensure there is no foreign body in the wound. <br>
+Apply direct pressure to stop bleeding by covering a clean gauze on it<br>
+ and add pressure on the gauze by your hand. Elevate the injured limb.
+</p>
+<p>
+
+crdts: Think Pedia<br>
+link: https://youtu.be/2OHR93x1I94?si=_X1-Z6xw_bzVNDWE
+</p>
+<p>
+Pic:
+<br>
+Credit:Vector infographic elements 
+ </p>    
+            </div>
+        </section>
+        
+    </main>
+</center>
+</body>
+</html>

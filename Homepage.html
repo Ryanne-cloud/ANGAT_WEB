@@ -1,0 +1,242 @@
+<!Doctype>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Homepage </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function openPopup(popupName) {
+            var popup = document.getElementById(popupName);
+            popup.style.display = 'block';
+        }
+        function closePopup(popupName) {
+            var popup = document.getElementById(popupName);
+            popup.style.display = 'none';
+        }
+
+        // Add animation class to images when clicked
+        function triggerAnimation(img) {
+            img.classList.add("clicked");
+            setTimeout(() => img.classList.remove("clicked"), 1000); // Reset animation after 1 second
+        }
+    </script>
+</head>
+
+<style>
+    body {
+        display: block;
+        margin: 0px;
+        background-image: url("bgg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: Arial, sans-serif;
+        padding-top: 120px;
+    }
+    .title-container {
+        text-align: center; 
+        margin: 0 auto; 
+    }
+    p {
+        text-align: center;
+        color: transparent;
+        font-size: 95px;
+        font-family: 'Arial Black', sans-serif;
+        margin: 0;
+        background: linear-gradient(90deg, #fff5ec, #feb47b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .subtitle {
+        text-align: center;
+        font-size: 24px;
+        color: #f4f4f4;
+        font-style: italic;
+        margin-top: 10px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #3f161e;
+        color: white;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: linear-gradient(to bottom, #3e2723, #4e342e, #6d4c41);
+    }
+    .navbar-icons {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    div {
+        display: flex;
+        justify-content: center;
+    }
+    .search-container {
+        margin-top: -50px;
+        position: relative;
+        margin-bottom: 80px;
+    }
+    .search-container input {
+        width: 700px;
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: none;
+        box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.2);
+    }
+    .search-container input:focus {
+        position: revert-layer;
+        top: 50px;
+        right: 10px;
+        color: #3f161e;
+        cursor: pointer;
+    }
+    h3 {
+        font-size: 30px;
+        font-family: 'Verdana', sans-serif;
+        color: #fff5ec; 
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6); 
+        margin-top: 10px;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        gap: 250px;
+        margin-top: 40px;
+    }
+    .image-container a {
+        text-decoration: none;
+        border: 2px solid transparent;
+        transition: transform 0.3s, border-color 0.3s;
+    }
+    .image-container a:hover {
+        transform: scale(1.05);
+        border-color: #f4f4f4;
+    }
+    .image-container img {
+        width: 260px;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 5px 10px 30px #000;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    /* Add unique animation when clicked */
+    .image-container img.clicked {
+        animation: zoomIn 1s forwards, fadeOut 1s forwards;
+    }
+
+    @keyframes zoomIn {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(1.2);
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0.5;
+        }
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        width: 300px;
+        max-width: 90%;
+        border-radius: 10px;
+        z-index: 2000;
+    }
+    .popup .close {
+        cursor: pointer;
+        font-size: 20px;
+        color: #3f161e;
+        float: right;
+    }
+    .popup h3 {
+        color: #3f161e;
+    }
+    #profilePopup {
+        display: none;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        width: 250px;
+        max-width: 90%;
+        border-radius: 10px;
+        z-index: 2000;
+    }
+    #profilePopup a {
+        text-decoration: none;
+        color: #3f161e;
+        font-size: 18px;
+    }
+    .navbar-icons a:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+    }
+</style>
+
+<body>
+    <nav class="navbar">
+        <img src= "logo.png" width="80px" height="80px">
+
+        <div class="navbar-icons">
+            <a href="javascript:void(0);" onclick="openPopup('profilePopup')"><img src="profile.png" width="50px" height="50px"></a>
+            <a href="javascript:void(0);" onclick="openPopup('menuPopup')"><img src="navbar.png" width="40px" height="40px"></a>
+        </div>
+    </nav>
+
+    <div class="title-container">
+        <p>A.N.G.A.T</p>
+        <div class="subtitle">(Awareness, Nurturing, Guidance, Advocacy, Training)</div>
+    </div>
+
+    <div class="image-container">
+        <a href="WTDIS.html" onclick="triggerAnimation(this.querySelector('img'))">
+            <img src="wtdis.png" alt="What to do in situations">
+            <center><h3>What to do in <br> situations </h3></center>
+        </a>
+        <a href="Lifts.html" onclick="triggerAnimation(this.querySelector('img'))">
+            <img src="carry.png" alt="Lifts and Carry">
+            <center><h3>Lifts and Carry</h3></center>
+        </a>
+        <a href="Bandaging.html" onclick="triggerAnimation(this.querySelector('img'))">
+            <img src="bandaging.png" alt="Bandaging">
+            <center><h3>Bandaging</h3></center>
+        </a>
+    </div>
+
+    <div id="menuPopup" class="popup">
+        <span class="close" onclick="closePopup('menuPopup')">&times;</span>
+        <a href="index.html" style="color: #3f161e;"><h3>Quit</h3></a>
+    </div>
+
+    <div id="profilePopup" class="popup">
+        <span class="close" onclick="closePopup('profilePopup')">&times;</span>
+        <a href="about_us.html"><h3>About Us</h3></a>
+    </div>
+</body>
+</html>
